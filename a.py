@@ -1,5 +1,5 @@
 import requests as requ
-import threading, time
+import threading, time, sys
 from pathlib import Path
 
 def get_url(url):
@@ -9,7 +9,7 @@ def get_url(url):
         return None
 
 
-url = "https://img.paulzzh.com/touhou/random"
+url = sys.argv[1]
 urlList = []
 
 def down(img):
@@ -31,4 +31,4 @@ while True:
         print(f"发现：{img}已发现{len(urlList)}个")
         urlList.append(img)
         threading.Thread(target=down, args=(img,)).start()
-    time.sleep(1)
+    time.sleep(0.3)
