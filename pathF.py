@@ -9,6 +9,9 @@ for i in dirls:
         dirls2.append(i)
 dirls = dirls2
 print(f"目标{len(dirls)}个")
+os.mkdir("./tmp")
+for i in dirls:
+    os.rename(i, "./tmp/" + i)
 for i in range(len(dirls)):
-    os.rename(dirls[i], str(i) + Path(dirls[i]).suffix)
+    os.rename("./tmp/" + dirls[i], str(i) + Path(dirls[i]).suffix)
     print(f"{i} {dirls[i]} -> {str(i) + Path(dirls[i]).suffix}")
