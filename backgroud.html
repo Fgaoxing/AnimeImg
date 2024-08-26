@@ -1,0 +1,29 @@
+<body>
+<script>
+    let list = []
+    fetch("./list.txt", {
+        method: "GET",
+    }).then(res => res.text()).then(text => {
+        list = text.split("\n")
+        console.log(list[Math.round(Math.random() * list.length)], parseInt(location.hash.slice(1) || "1000"))
+        document.body.style.backgroundImage = `url(${list[Math.floor(Math.random() * list.length)]})`
+        setInterval(function () {
+            console.log(list[Math.round(Math.random() * list.length)], parseInt(location.hash.slice(1) || "1000"))
+            document.body.style.backgroundImage = `url(${list[Math.floor(Math.random() * list.length)]})`
+        }, parseInt(location.hash.slice(1) || "1000"))
+    }).catch(err => {
+        document.write(err)
+    })
+</script>
+<style>
+    :root, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+</style>
+</body>
